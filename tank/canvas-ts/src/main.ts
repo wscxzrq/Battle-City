@@ -1,5 +1,10 @@
 import './style.scss'
-import config from './config.ts';
-const app = document.querySelector<HTMLDivElement>('#app')!;
-app.style.width = config.canvas.width + 'px';
-app.style.height = config.canvas.height + 'px';
+import straw from './canvas/straw.ts';
+import { promise } from './service/image.ts';
+// 异步加载图片，图片加载完成后进行画布渲染
+async function bootsrap() {
+  await Promise.all(promise);
+  straw.render();
+ }
+
+void bootsrap()
