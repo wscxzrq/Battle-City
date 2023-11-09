@@ -1,12 +1,11 @@
 import config from "../config";
-export interface position {
-  x:number,
-  y:number
-}
+import position from "../service/position";
 // 画布类
 export default abstract class canvasAbstract {
-  protected items = [] // 存放坦克数据
+  protected models:IModel[] = [] // 存放实例数据
   abstract render():void
+  abstract num():number
+  abstract model():ModelConstructor
   // protected 子类可以调用外部无法调用
   constructor(
     protected el = document.createElement('canvas'),
@@ -27,38 +26,24 @@ export default abstract class canvasAbstract {
   }
 
   /**
-   * 绘制模型
+   * 创建模型实例
+   * @param num 需要渲染的模型个数
+   * @param model 需要渲染的模型构造函数
    */
-  protected drawModels(num:number,model:any) {
-    this.positionCollection(num).forEach(position => {
-      new model(this.canvas,position);
+  protected createModels() {
+    position.positionCollection(this.num()).forEach(position => {
+      const model = this.model()
+      const instance = new model(this.canvas,position.x,position.y);
+      this.models.push(instance)
     })
   }
 
   /**
-   * 批量生成 处理生成重叠问题
+   * 渲染模型
+   * 解决重绘画布时模型多次重绘
    */
-  protected positionCollection(num:number):position[] {
-    const collection: position[] = [];
-    for(let i = 0; i < num; i++) {
-      while(true) {
-        const position = this.position();
-        const exists = collection.some(c => c.x === position.x && c.y === position.y);
-        if(!exists) {
-          collection.push(position);
-          break
-        }
-      }
-    }
-    return collection
+  protected renderModels() {
+    this.models.forEach(model => model.render())
   }
-  /** 
-   * 返回随机位置
-   */
-  protected position ():position {
-    return {
-      x:Math.floor(Math.random() * (config.canvas.width / config.model.width)) * config.model.width,
-      y:Math.floor(Math.random() * (config.canvas.height / config.model.height)) * config.model.height
-    }
-  }
+  
 }
