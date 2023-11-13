@@ -5,7 +5,7 @@ import model from "../model/straw.ts"; // 草地模型
 /**
  * 草地画布
  */
-class straw extends canvasAbstract {
+class straw extends canvasAbstract implements ICanvas {
   num():number {
     return config.straw.num
   }

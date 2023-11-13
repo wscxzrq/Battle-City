@@ -4,7 +4,7 @@ import config from "../config";
 export default abstract class modelAbstract {
   // 抽象方法，要求子类定义一个抽象方法
   abstract render():void
-
+  abstract name:string
   constructor(
     protected canvas:CanvasRenderingContext2D,
     protected x:number,

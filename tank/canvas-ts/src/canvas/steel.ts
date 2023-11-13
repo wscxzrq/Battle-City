@@ -4,7 +4,7 @@ import model from '../model/steel'
 /**
  * 白色的墙的画布
  */
-class steel extends canvasAbstract {
+class steel extends canvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }
