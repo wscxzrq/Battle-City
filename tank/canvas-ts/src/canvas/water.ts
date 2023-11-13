@@ -4,7 +4,7 @@ import model from '../model/water'
 /**
  * 水的画布
  */
-class water extends canvasAbstract {
+class water extends canvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }
