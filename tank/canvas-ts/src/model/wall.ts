@@ -6,8 +6,11 @@ import modelAbstract from "./modelAbstract";
  * 砖墙模型类
  */
 export default class extends modelAbstract implements IModel {
+  image(): HTMLImageElement {
+    return image.get(this.name as keyof typeof config.images)!;
+  }
   name: string = 'wall';
   render(): void {
-    super.draw(image.get(this.name as keyof typeof config.images)!)
+    super.draw()
   }
 }

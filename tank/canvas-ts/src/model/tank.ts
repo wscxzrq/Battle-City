@@ -8,19 +8,32 @@ import _ from 'lodash'
  */
 export default class extends modelAbstract implements IModel {
   name: string = 'tank';
-  protected direction: directionEnum = directionEnum.bottom
   render(): void {
-    this.randomDirection();
-    super.draw(this.randomImage()!)
+    this.move();
   }
 
-  // 随机产生方向
-  randomDirection () {
-    this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum;
+  // 坦克移动
+  protected move () {
+    switch(this.direction) {
+      case directionEnum.top:
+        this.y -= 2;
+        break
+      case directionEnum.right:
+        this.x += 2;
+        break
+      case directionEnum.bottom:
+        this.y += 2;
+        break
+      case directionEnum.left:
+        this.x -= 2;
+        break
+    }
+    super.draw();   
   }
+
 
   // 产生随机图片
-  randomImage() {
+  image() {
     let direction = this.name + _.upperFirst(this.direction);
     return image.get(direction as keyof typeof config.images)!
   }

@@ -14,7 +14,17 @@ class tank extends canvasAbstract implements ICanvas {
   }
   render(): void {
     this.createModels();
-    super.renderModels();
+    this.renderModels();
+
+    setInterval(() => this.renderModels(),50)
+  }
+
+  /**
+   * 渲染模型
+   */
+  protected renderModels() {
+    this.canvas.clearRect(0,0,config.canvas.width,config.canvas.height);
+    super.renderModels(); 
   }
 
   /**
