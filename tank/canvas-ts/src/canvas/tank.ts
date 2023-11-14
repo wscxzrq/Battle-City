@@ -16,14 +16,14 @@ class tank extends canvasAbstract implements ICanvas {
     this.createModels();
     this.renderModels();
 
-    setInterval(() => this.renderModels(),50)
+    setInterval(() => this.renderModels(),config.timeout)
   }
 
   /**
    * 渲染模型
    */
   protected renderModels() {
-    this.canvas.clearRect(0,0,config.canvas.width,config.canvas.height);
+    this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height);
     super.renderModels(); 
   }
 
@@ -36,7 +36,7 @@ class tank extends canvasAbstract implements ICanvas {
     for(let i = 0; i < this.num(); i++) {
       const pos = position.position();
       const model = this.model();
-      const instance = new model(this.canvas,pos.x,0);
+      const instance = new model(pos.x,0);
       this.models.push(instance);
     }
   }

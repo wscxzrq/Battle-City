@@ -10,6 +10,7 @@ import tankLeft from './static/images/tank/left.gif'
 
 
 export default {
+  timeout:10, // 坦克运行的速度
   canvas:{
     width:900,
     height:500

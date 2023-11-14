@@ -2,7 +2,7 @@ import config from "../config";
 import position from "../service/position";
 // 画布类
 export default abstract class canvasAbstract {
-  protected models:IModel[] = [] // 存放实例数据
+  public models:IModel[] = [] // 存放实例数据
   abstract render():void
   abstract num():number
   abstract model():ModelConstructor
@@ -10,9 +10,9 @@ export default abstract class canvasAbstract {
   constructor(
     protected el = document.createElement('canvas'),
     protected app = document.querySelector('#app')!,
-    protected canvas = el.getContext('2d')!,
+    public ctx = el.getContext('2d')!,
   ) {
-    // 子类继承时会自动执行 构造函数
+    // 每个子类继承时会自动执行 构造函数
    this.createCanvas();
   }
 
@@ -33,7 +33,7 @@ export default abstract class canvasAbstract {
   protected createModels() {
     position.positionCollection(this.num()).forEach(position => {
       const model = this.model()
-      const instance = new model(this.canvas,position.x,position.y);
+      const instance = new model(position.x,position.y);
       this.models.push(instance)
     })
   }
