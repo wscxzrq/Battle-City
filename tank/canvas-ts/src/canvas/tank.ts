@@ -5,7 +5,7 @@ import position from "../service/position";
 /**
  * 坦克的画布
  */
-class tank extends canvasAbstract implements ICanvas {
+export default new (class  extends canvasAbstract implements ICanvas {
   num(): number {
     return config.tank.num;
   }
@@ -40,5 +40,4 @@ class tank extends canvasAbstract implements ICanvas {
       this.models.push(instance);
     }
   }
-}
-export default new tank();
+})('tank')

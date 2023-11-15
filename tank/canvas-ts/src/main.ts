@@ -5,6 +5,7 @@ import wall from './canvas/wall.ts';
 import water from './canvas/water.ts';
 import steel from './canvas/steel.ts';
 import tank from './canvas/tank.ts';
+import bullet from './canvas/bullet.ts'
 // 异步加载图片，图片加载完成后进行画布渲染
 async function bootsrap() {
   await Promise.all(promise);
@@ -18,6 +19,8 @@ async function bootsrap() {
   steel.render(); 
   // 渲染坦克
   tank.render();
+  // 渲染子弹
+  bullet.render();
  }
 
 void bootsrap()
