@@ -1,12 +1,10 @@
-import steel from "../canvas/steel";
 import tank from "../canvas/tank";
-import wall from "../canvas/wall";
-import water from "../canvas/water";
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
 import { image } from "../service/image";
 import modelAbstract from "./modelAbstract";
 import _ from 'lodash'
+import util from '../util'
 /**
  * 坦克模型类
  */
@@ -15,6 +13,7 @@ export default class extends modelAbstract implements IModel {
   name: string = 'tank';
   render(): void {
     this.move();
+    // 增加坦克向下走的概率
     if(_.random(20) == 1) {
       this.direction = directionEnum.bottom;
     }
@@ -38,7 +37,7 @@ export default class extends modelAbstract implements IModel {
           x--;
           break
       }
-      if(this.isTouch(x,y) === true) {
+      if(util.isModelTouch(x,y) || util.isCanvasTouch(x,y)) {
         this.randomDirection();
       }else {
         this.x = x;
@@ -47,20 +46,6 @@ export default class extends modelAbstract implements IModel {
       }
     }
     super.draw();   
-  }
-
-  // 碰撞检测
-  protected isTouch(x:number,y:number):boolean {
-    if(x === 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height) {
-      return true
-    }
-
-    const models = [...water.models,...wall.models,...steel.models];
-    return models.some(model => {
-      const state = y + this.height <= model.y || x >= model.x + this.width || y >= model.y + this.height  || x + this.width < model.x;
-      return !state
-    })
-    
   }
 
   // 产生随机图片

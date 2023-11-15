@@ -4,7 +4,7 @@ import model from '../model/wall'
 /**
  * 砖墙画布
  */
-class wall extends canvasAbstract implements ICanvas {
+export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }
@@ -16,5 +16,4 @@ class wall extends canvasAbstract implements ICanvas {
     super.renderModels();
   }
   
-}
-export default new wall()
+})('wall')

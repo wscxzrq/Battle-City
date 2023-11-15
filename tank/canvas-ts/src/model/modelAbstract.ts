@@ -7,7 +7,7 @@ export default abstract class modelAbstract {
   abstract render():void // 渲染函数
   abstract image():HTMLImageElement // 模型图片
   abstract name:string // 模型名称
-  protected direction: directionEnum = directionEnum.bottom // 方向
+  public direction: directionEnum = directionEnum.bottom // 方向
   public width = config.model.width // 模型宽度
   public height = config.model.height // 模型高度
   public abstract canvas:ICanvas // 画布
@@ -30,4 +30,12 @@ export default abstract class modelAbstract {
   randomDirection () {
     this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum;
   }
+
+  /**
+   * 卸载模型
+   */
+  destroy() {
+    this.canvas.removeModel(this);
+  }
+
 }
