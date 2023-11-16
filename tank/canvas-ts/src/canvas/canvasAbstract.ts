@@ -44,9 +44,9 @@ export default abstract class canvasAbstract {
    * 渲染模型
    * 解决重绘画布时模型多次重绘
    */
-  protected renderModels() {
+  public renderModels() {
     this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height);
-    this.models.forEach(model => model.render())
+    this.models.forEach(model => model.render());
   }
   
   public removeModel(model: IModel) {

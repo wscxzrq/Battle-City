@@ -10,6 +10,7 @@ interface BulletModelConstructor {
   new(tank:IModel):IModel
 }
 interface IModel {
+  name:string
   render():void,
   x:number,
   y:number,
@@ -18,6 +19,7 @@ interface IModel {
   image(): HTMLImageElement
   tank?:IModel // 是否发射子弹
   direction:directionEnum, // 坦克的方向
+  destroy():void, // 模型释放
 }
 /**
  * 画布的类型校验
@@ -27,4 +29,5 @@ interface ICanvas {
   model():ModelConstructor | BulletModelConstructor
   ctx:CanvasRenderingContext2D
   removeModel(model:IModel):void
+  renderModels():void
 }

@@ -13,9 +13,9 @@ export default {
    * @param models 碰撞检测的模型
    * @returns 碰撞到了
    */
-  isModelTouch(x:number,y:number,width=config.model.width,height=config.model.height, models = [...water.models,...wall.models,...steel.models]):boolean {
-    return models.some(model => {
-      const state = y + height <= model.y || x >= model.x + width || y >= model.y + height  || x + width < model.x;
+  isModelTouch(x:number,y:number,width=config.model.width,height=config.model.height, models = [...wall.models,...steel.models,...water.models]):IModel | undefined {
+    return models.find(model => {
+      const state = y + height <= model.y || x >= model.x + model.width || y >= model.y + model.height  || x + width <= model.x;
       return !state
     })
   },
@@ -29,7 +29,7 @@ export default {
    * @returns 碰撞到了
    */
   isCanvasTouch(x:number,y:number,width=config.model.width,height=config.model.height):boolean {
-    return x === 0 || x + width > config.canvas.width || y < 0 || y + height > config.canvas.height
+    return x < 0 || x + width > config.canvas.width || y < 0 || y + height > config.canvas.height
   }
 
 }

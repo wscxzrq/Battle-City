@@ -13,23 +13,23 @@ export default {
   timeout:10, // 坦克运行的速度
   canvas:{
     width:900,
-    height:500
+    height:600
   }, // 画布配置
   model:{
     width:30,
     height:30
   }, // 模型配置
   straw:{
-    num:120
+    num:20
   }, // 草地
   wall:{
     num:80
   }, // 砖墙
   water:{
-    num:60
-  }, // 砖墙
+    num:5
+  }, // 水
   steel:{
-    num:20
+    num:10
   }, // 白色墙体
   tank:{
     num:20
