@@ -27,15 +27,16 @@ export default abstract class modelAbstract {
   }
 
   // 随机产生方向
-  randomDirection () {
+  protected randomDirection () {
     this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum;
   }
 
   /**
    * 卸载模型
    */
-  destroy() {
+  public destroy() {
     this.canvas.removeModel(this);
+    this.canvas.renderModels();
   }
 
 }

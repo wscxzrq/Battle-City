@@ -6,7 +6,7 @@ import model from '../model/water'
  */
 export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
-    return config.wall.num;
+    return config.water.num;
   }
   model(): ModelConstructor {
     return model;

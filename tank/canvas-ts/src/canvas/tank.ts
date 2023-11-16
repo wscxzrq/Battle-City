@@ -5,7 +5,7 @@ import position from "../service/position";
 /**
  * 坦克的画布
  */
-export default new (class  extends canvasAbstract implements ICanvas {
+export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
     return config.tank.num;
   }
@@ -22,7 +22,7 @@ export default new (class  extends canvasAbstract implements ICanvas {
   /**
    * 渲染模型
    */
-  protected renderModels() {
+  public renderModels() {
     this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height);
     super.renderModels(); 
   }

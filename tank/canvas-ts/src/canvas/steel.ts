@@ -6,7 +6,7 @@ import model from '../model/steel'
  */
 export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
-    return config.wall.num;
+    return config.steel.num;
   }
   model(): ModelConstructor {
     return model;
