@@ -6,6 +6,9 @@ import modelAbstract from "./modelAbstract";
 import util from "../util"
 import wall from '../canvas/wall';
 import steel from '../canvas/steel';
+import boss from '../canvas/boss';
+import tank from '../canvas/tank';
+import play from '../canvas/play';
 /**
  * 子弹模型类
  */
@@ -22,26 +25,27 @@ export default class extends modelAbstract implements IModel {
   }
   render(): void {
     let {x,y} = this;
+    let step = this.tank.name == 'play' ? 10 : 5
     switch(this.direction) {
       case directionEnum.top:
-        y -= 2;
+        y -= step;
         break;
       case directionEnum.right:
-        x += 2;
+        x += step;
         break;
       case directionEnum.bottom:
-        y += 2;
+        y += step;
         break;
       case directionEnum.left:
-        x -= 2;
+        x -= step;
         break;
     }
     // 碰撞检测
-    const touchModel = util.isModelTouch(x,y,2,2,[...wall.models,...steel.models]);
+    const touchModel = util.isModelTouch(x,y,2,2,[...wall.models,...steel.models,...boss.models,...tank.models,...play.models]);
     if(util.isCanvasTouch(x,y,2,2)) {
       // 如果碰到画布卸载模型
       this.destroy();
-    }else if (touchModel) {
+    }else if (touchModel && touchModel.name != this.tank.name) {
       this.destroy();
       if(touchModel.name != 'steel') touchModel.destroy();
       this.blast(touchModel);

@@ -1,3 +1,4 @@
+import boss from "./canvas/boss";
 import steel from "./canvas/steel";
 import wall from "./canvas/wall";
 import water from "./canvas/water";
@@ -13,7 +14,7 @@ export default {
    * @param models 碰撞检测的模型
    * @returns 碰撞到了
    */
-  isModelTouch(x:number,y:number,width=config.model.width,height=config.model.height, models = [...wall.models,...steel.models,...water.models]):IModel | undefined {
+  isModelTouch(x:number,y:number,width=config.model.width,height=config.model.height, models = [...wall.models,...steel.models,...water.models,...boss.models]):IModel | undefined {
     return models.find(model => {
       const state = y + height <= model.y || x >= model.x + model.width || y >= model.y + model.height  || x + width <= model.x;
       return !state
