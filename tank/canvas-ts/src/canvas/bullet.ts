@@ -2,6 +2,8 @@ import canvasAbstract from "./canvasAbstract";
 import model from '../model/bullet' 
 import tank from "./tank";
 import bullet from '../model/bullet'
+import play from "./play";
+
 /**
  * 子弹画布
  */
@@ -31,6 +33,13 @@ import bullet from '../model/bullet'
         this.models.push(new bullet(tank))
       }
     })
+  }
+
+  /**
+   * 创建玩家子弹
+   */
+  addPlayButtle() {
+    this.models.push(new bullet(play.models[0]))
   }
 })('bullet')
 

@@ -2,7 +2,7 @@ import canvasAbstract from "./canvasAbstract";
 import model from '../model/boss'
 import config from "../config";
 /**
- * 水的画布
+ * boss的画布
  */
 export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
@@ -16,6 +16,9 @@ export default new (class extends canvasAbstract implements ICanvas {
     super.renderModels();
   }
 
+  /**
+   * 创建 boss 模型
+   */
   protected createModels() {
     [{x:config.canvas.width / 2, y:config.canvas.height - config.model.height}].forEach(position => {
       const model = this.model() as ModelConstructor;

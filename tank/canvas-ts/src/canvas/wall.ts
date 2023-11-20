@@ -17,6 +17,9 @@ export default new (class extends canvasAbstract implements ICanvas {
     super.renderModels();
   }
   
+  /**
+   *  创建boss墙
+   */
   createBossWall() {
     const cw = config.canvas.width;
     const ch = config.canvas.height;
