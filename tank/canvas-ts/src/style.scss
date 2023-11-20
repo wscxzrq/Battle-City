@@ -8,8 +8,10 @@ body {
   #app {
     width: 900px;
     height: 600px;
-    background-color: #333;
+    background-color: #000;
     position: relative;
+    border: 10px solid #333;
+    box-sizing: content-box;
     canvas {
       position: absolute;
     }

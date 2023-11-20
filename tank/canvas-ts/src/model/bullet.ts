@@ -6,6 +6,7 @@ import modelAbstract from "./modelAbstract";
 import util from "../util"
 import wall from '../canvas/wall';
 import steel from '../canvas/steel';
+import boss from '../canvas/boss';
 /**
  * 子弹模型类
  */
@@ -37,7 +38,7 @@ export default class extends modelAbstract implements IModel {
         break;
     }
     // 碰撞检测
-    const touchModel = util.isModelTouch(x,y,2,2,[...wall.models,...steel.models]);
+    const touchModel = util.isModelTouch(x,y,2,2,[...wall.models,...steel.models,...boss.models]);
     if(util.isCanvasTouch(x,y,2,2)) {
       // 如果碰到画布卸载模型
       this.destroy();

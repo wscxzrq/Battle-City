@@ -7,7 +7,11 @@ import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
-
+import boss from './static/images/boss/boss.png'
+import playTop from './static/images/player/top.gif'
+import playRight from './static/images/player/right.gif'
+import playBottom from './static/images/player/bottom.gif'
+import playLeft from './static/images/player/left.gif'
 
 export default {
   timeout:10, // 坦克运行的速度
@@ -32,7 +36,7 @@ export default {
     num:10
   }, // 白色墙体
   tank:{
-    num:20
+    num:5
   }, // 坦克
   images:{
     straw, //草地图片
@@ -44,5 +48,10 @@ export default {
     tankBottom, // 向下坦克图片
     tankLeft, // 向左坦克图片
     bullet, // 子弹图片
+    boss, // boos 图片
+    playTop, // 玩家向上图片
+    playRight, // 玩家向右图片
+    playBottom, // 玩家向下图片
+    playLeft, // 玩家向左图片
   }
 }
