@@ -9,6 +9,7 @@ import steel from '../canvas/steel';
 import boss from '../canvas/boss';
 import tank from '../canvas/tank';
 import play from '../canvas/play';
+import audio from '../service/audio';
 /**
  * 子弹模型类
  */
@@ -67,6 +68,7 @@ export default class extends modelAbstract implements IModel {
    * 爆炸动画
    */
   protected blast(model:IModel) {
+    audio.blast();
     Array(...Array(8).keys()).reduce((promise,index) => {
       return new Promise(resolve => {
         setTimeout(() => {
